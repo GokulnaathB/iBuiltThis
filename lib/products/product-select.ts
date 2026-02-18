@@ -18,6 +18,7 @@ export async function getFeaturedProducts() {
 // Doesn't make sense to use the cached result of getFeaturedProducts in getRecentlyLaunchedProducts because the recently launched products could be updated dynamically all the time. So, we can use the connection API from NextJS that allows us to simply get this data at runtime. But in order for us to use connection and always get the latest fresh data, we could not use it with use cache. So, let's create getAllProducts (later renamed it as getAllApprovedProducts) function and use that in getRecentlyLaunchedProducts along with the connection API.
 
 export async function getAllApprovedProducts() {
+  "use cache";
   const productsData = await db
     .select()
     .from(products)
