@@ -11,9 +11,9 @@ const Logo = () => {
   return (
     <Link href="/" className="flex items-center gap-2 group">
       <div className="size-8 rounded-lg bg-primary flex items-center justify-center">
-        <SparklesIcon className="size-4 text-primary-foreground" />
+        <SparklesIcon className="size-3 sm:size-4 text-primary-foreground" />
       </div>
-      <span className="text-xl font-bold">
+      <span className="text-md sm:text-xl font-bold">
         i<span className="text-primary">Built</span>This
       </span>
     </Link>
@@ -25,23 +25,23 @@ export default function Header() {
       <div className="wrapper px-1 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Logo />
-          <nav className="flex items-center gap-1">
+          <nav className="flex items-center mx-1">
             <Link
               href="/"
-              className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors hover:bg-muted/50"
+              className="flex items-center gap-1 pl-1.5 sm:px-3 sm:gap-2 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors hover:bg-muted/50"
             >
               <HomeIcon className="size-4" />
               <span>Home</span>
             </Link>
             <Link
               href="/explore"
-              className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors hover:bg-muted/50"
+              className="flex items-center gap-1 pl-1.5 sm:px-3 sm:gap-2 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors hover:bg-muted/50"
             >
               <CompassIcon className="size-4" />
               <span>Explore</span>
             </Link>
           </nav>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3">
             <Suspense fallback={<div>Loading Auth...</div>}>
               <SignedOut>
                 <SignInButton />
@@ -51,8 +51,8 @@ export default function Header() {
               </SignedOut>
               <SignedIn>
                 <Button asChild>
-                  <Link href="/submit">
-                    <SparklesIcon className="size-4" />
+                  <Link href="/submit" className="text-xs sm:text-sm">
+                    <SparklesIcon className="size-3 sm:size-4" />
                     Submit Project
                   </Link>
                 </Button>
