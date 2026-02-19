@@ -9,7 +9,7 @@ import { CustomUserButton } from "./custom-user-button";
 
 const Logo = () => {
   return (
-    <Link href="/" className="flex items-center gap-2 group">
+    <Link href="/" className="flex items-center gap-0.5 sm:gap-2 group">
       <div className="size-8 rounded-lg bg-primary flex items-center justify-center">
         <SparklesIcon className="size-3 sm:size-4 text-primary-foreground" />
       </div>
@@ -52,7 +52,7 @@ export default function Header() {
               <SignedIn>
                 <Button asChild>
                   <Link href="/submit" className="text-xs sm:text-sm">
-                    <SparklesIcon className="size-3 sm:size-4" />
+                    <SparklesIcon className="hidden sm:block sm:size-4" />
                     Submit Project
                   </Link>
                 </Button>
