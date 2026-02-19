@@ -9,16 +9,16 @@ import {
 
 export default function AdminActions({
   status,
-  productId,
+  product,
 }: {
   status: string;
-  productId: ProductType["id"];
+  product: ProductType;
 }) {
   const handleApprove = async () => {
-    await approveProductAction(productId);
+    await approveProductAction(product);
   };
   const handleReject = async () => {
-    await rejectProductAction(productId);
+    await rejectProductAction(product);
   };
   return (
     <div className="space-y-2">

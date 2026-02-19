@@ -18,7 +18,13 @@ const initialState: FormState = {
   message: "",
 };
 
-export default function ProductSubmitForm() {
+export default function ProductSubmitForm({
+  userId,
+  orgId,
+}: {
+  userId: string;
+  orgId: string;
+}) {
   const [state, formAction, isPending] = useActionState(
     addProductAction,
     initialState,
@@ -28,6 +34,17 @@ export default function ProductSubmitForm() {
   const success = state.success ?? false;
   return (
     <form className="space-y-6" action={formAction}>
+      {!userId ? (
+        <p className="pb-1 text-xl text-red-600">Sign-in to submit a product</p>
+      ) : !orgId ? (
+        <p className="pb-1 text-lg text-red-600">
+          You must be a part of an organization to submit a product. Click user
+          icon, go to organizations, and select the organization that is named
+          the same as your name.
+        </p>
+      ) : (
+        ""
+      )}
       {message && (
         <div
           className={cn(

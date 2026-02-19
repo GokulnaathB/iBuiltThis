@@ -62,7 +62,7 @@ export default async function AdminProductCard({
           </CardFooter>
         </div>
         <div className="lg:shrink-0">
-          <AdminActions status={product.status ?? ""} productId={product.id} />
+          <AdminActions status={product.status ?? ""} product={product} />
         </div>
       </div>
     </Card>

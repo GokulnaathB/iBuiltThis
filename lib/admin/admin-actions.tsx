@@ -5,14 +5,16 @@ import { products } from "@/db/schema";
 import { ProductType } from "@/types";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
+import { sendApprovalMail, sendRejectionMail } from "./email-actions";
 
-export const approveProductAction = async (productId: ProductType["id"]) => {
+export const approveProductAction = async (product: ProductType) => {
   try {
     await db
       .update(products)
       .set({ status: "approved", approvedAt: new Date() })
-      .where(eq(products.id, productId));
+      .where(eq(products.id, product.id));
     revalidatePath("/admin");
+    await sendApprovalMail(product.submittedBy as string, product.name);
     return {
       success: true,
       message: "Product approved successfully",
@@ -25,13 +27,17 @@ export const approveProductAction = async (productId: ProductType["id"]) => {
     };
   }
 };
-export const rejectProductAction = async (productId: ProductType["id"]) => {
+export const rejectProductAction = async (product: ProductType) => {
   try {
     await db
       .update(products)
       .set({ status: "rejected" })
-      .where(eq(products.id, productId));
+      .where(eq(products.id, product.id));
     revalidatePath("/admin");
+    await sendRejectionMail(
+      product.submittedBy as string,
+      product.name as string,
+    );
     return {
       success: true,
       message: "Product rejected successfully",
