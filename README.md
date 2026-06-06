@@ -14,7 +14,7 @@ Tech stack used:
 - Tailwind
 - Deployed on Vercel
 
-About the project:
+Technical details:
 
 - Built a responsive, full-stack product discovery site iBuiltThis, grants users to submit, explore, and vote projects.
 - Developed using Next.js (App Router) with Server Components, Server Actions, and Caching.
