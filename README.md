@@ -12,6 +12,7 @@ Tech stack used:
 - Zod
 - Shadcn
 - Tailwind
+- Deployed on Vercel
 
 About the project:
 
